@@ -11,8 +11,8 @@
     <div id="blog"></div>
     <script>
       const postHtml = (post) =>
-        `<div id="post-${post.slug}">
-          <a href="javascript:void(0)">
+        `<div>
+          <a href="?p=${post.slug}">
             <h2>${post.title}</h2>
           </a>
           ${post.body
@@ -43,7 +43,7 @@
 
       Phasellus nec vehicula ex. Integer tincidunt est nec odio imperdiet mollis. Fusce ac venenatis diam, non aliquet ligula. Vivamus feugiat laoreet metus, a imperdiet risus mollis vitae. Donec non ultrices lorem, a eleifend diam. Ut at sem velit. Quisque libero nisl, ornare vitae luctus ac, tincidunt in ante. Vivamus et libero in neque maximus ultrices at in lorem. Ut sollicitudin vulputate lacus id dapibus. Nullam felis nisi, vestibulum ac tincidunt vitae, laoreet vel tortor. Proin fermentum finibus mauris vel fringilla. Integer vel gravida nunc.
 
-      Integer eget est accumsan, porttitor tortor ut, finibus ligula. Etiam molestie posuere quam. Proin congue turpis ac lacus finibus facilisis. Nam auctor vestibulum tortor, et semper quam lacinia a. Nulla elementum sapien eget justo maximus eleifend. Curabitur tortor mauris, tincidunt nec accumsan sed, vulputate nec ex. Sed sagittis enim nunc, et tempor libero egestas sed.`,
+      Integer eget est accumsan, porttitor tortor ut, finibus ligula. Etiam molestie posuere quam. Proin congue turpis ac lacus finibus facilisis. Nam auctor vestibulum tortor, et semper quam lacinia a. Nulla elementum sapien eget justo maximus eleifend. Curabitur tortor mauris, tincidunt nec accumsan sed, vulputate nec ex. Sed sagittis enim nunc, et tempor libero egestas sed. `,
         },
         "blog-post-2": {
           slug: "blog-post-2",
@@ -56,7 +56,7 @@
 
       Phasellus nec vehicula ex. Integer tincidunt est nec odio imperdiet mollis. Fusce ac venenatis diam, non aliquet ligula. Vivamus feugiat laoreet metus, a imperdiet risus mollis vitae. Donec non ultrices lorem, a eleifend diam. Ut at sem velit. Quisque libero nisl, ornare vitae luctus ac, tincidunt in ante. Vivamus et libero in neque maximus ultrices at in lorem. Ut sollicitudin vulputate lacus id dapibus. Nullam felis nisi, vestibulum ac tincidunt vitae, laoreet vel tortor. Proin fermentum finibus mauris vel fringilla. Integer vel gravida nunc.
 
-      Integer eget est accumsan, porttitor tortor ut, finibus ligula. Etiam molestie posuere quam. Proin congue turpis ac lacus finibus facilisis. Nam auctor vestibulum tortor, et semper quam lacinia a. Nulla elementum sapien eget justo maximus eleifend. Curabitur tortor mauris, tincidunt nec accumsan sed, vulputate nec ex. Sed sagittis enim nunc, et tempor libero egestas sed.`,
+      Integer eget est accumsan, porttitor tortor ut, finibus ligula. Etiam molestie posuere quam. Proin congue turpis ac lacus finibus facilisis. Nam auctor vestibulum tortor, et semper quam lacinia a. Nulla elementum sapien eget justo maximus eleifend. Curabitur tortor mauris, tincidunt nec accumsan sed, vulputate nec ex. Sed sagittis enim nunc, et tempor libero egestas sed. `,
         },
         "blog-post-3": {
           slug: "blog-post-3",
@@ -69,7 +69,7 @@
 
       Phasellus nec vehicula ex. Integer tincidunt est nec odio imperdiet mollis. Fusce ac venenatis diam, non aliquet ligula. Vivamus feugiat laoreet metus, a imperdiet risus mollis vitae. Donec non ultrices lorem, a eleifend diam. Ut at sem velit. Quisque libero nisl, ornare vitae luctus ac, tincidunt in ante. Vivamus et libero in neque maximus ultrices at in lorem. Ut sollicitudin vulputate lacus id dapibus. Nullam felis nisi, vestibulum ac tincidunt vitae, laoreet vel tortor. Proin fermentum finibus mauris vel fringilla. Integer vel gravida nunc.
 
-      Integer eget est accumsan, porttitor tortor ut, finibus ligula. Etiam molestie posuere quam. Proin congue turpis ac lacus finibus facilisis. Nam auctor vestibulum tortor, et semper quam lacinia a. Nulla elementum sapien eget justo maximus eleifend. Curabitur tortor mauris, tincidunt nec accumsan sed, vulputate nec ex. Sed sagittis enim nunc, et tempor libero egestas sed.`,
+      Integer eget est accumsan, porttitor tortor ut, finibus ligula. Etiam molestie posuere quam. Proin congue turpis ac lacus finibus facilisis. Nam auctor vestibulum tortor, et semper quam lacinia a. Nulla elementum sapien eget justo maximus eleifend. Curabitur tortor mauris, tincidunt nec accumsan sed, vulputate nec ex. Sed sagittis enim nunc, et tempor libero egestas sed. `,
         },
       };
 
@@ -79,13 +79,6 @@
 
       if (postSlug === null) {
         blogEl.innerHTML = Object.values(posts).map(postHtml).join("\n");
-        Object.values(posts).forEach((post) => {
-          document
-            .getElementById(`post-${post.slug}`)
-            .getElementsByTagName("a")[0].onclick = () => {
-            location.search = `?p=${post.slug}`;
-          };
-        });
       } else {
         const post = posts[postSlug];
         blogEl.innerHTML = singlePostHtml(post);
