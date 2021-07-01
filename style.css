@@ -8,10 +8,12 @@ body {
 
 #blog {
   margin: 0 auto;
-  width: 800px;
+  width: 60%;
+  max-width: 800px;
+  min-width: 400px;
 }
 
 #blog img {
-  width: 800px;
+  width: 100%;
   border-radius: 10px;
 }
