@@ -4,33 +4,33 @@ I've always thought the idea of a databaseless blog sounded pretty cool. Because
 
 However, writing all of one's posts in a single file doesn't sound all too fun, so let's store the individual posts in their own files as text, and have a "DB file" just store a JSON list of references to these posts. Nothing revolutionary.
 
-![Database Architecture](/posts/2021/07/01/db.svg)
+![Database Architecture](/blog/posts/2021/07/01/db.svg)
 
 We can now just use a simple frontend to fetch this "DB file", I call mine `posts.json`, and then decide how many of the actual posts we wish to fetch. Right now, I only have 2 posts at the time of writing, so I simply fetch all the posts.
 
-![Fetching data](/posts/2021/07/01/fetch-data.png)
+![Fetching data](/blog/posts/2021/07/01/fetch-data.png)
 
 Once we have fetched the blog post(s) we wish to render, we can run some quick parsing over each text file to generate HTML. I have used Markdown to write my blog posts, so converting this to HTML isn't too difficult. In fact, a mini Markdown parser is included in this script! It's quite rudimentary at the moment (I'm literally adding features to it as I write this post!), but I might write a post of parsing Markdown in the future, once it is more complete.
 
-![Fetching data](/posts/2021/07/01/parse-html.png)
+![Fetching data](/blog/posts/2021/07/01/parse-html.png)
 
 Finally once we have the HTML, we can slap some CSS on it to make it look as pretty as we want. I currently choose to go for a more brutalist style, with just HTML and [very little CSS](https://github.com/JCGrant/blog/blob/main/style.css), but maybe this will change one day.
 
 Here's how the blog looks at the time of writing:
 
-![My Blog](/posts/2021/07/01/blog.png)
+![My Blog](/blog/posts/2021/07/01/blog.png)
 
-![An example post](/posts/2021/07/01/post.png)
+![An example post](/blog/posts/2021/07/01/post.png)
 
 One final piece of the puzzle is deciding which view to render: the list of posts, or a single post.
 
 We do this by using the search parameter `p` in the URL:
 
-![The URL](/posts/2021/07/01/url.png)
+![The URL](/blog/posts/2021/07/01/url.png)
 
 We first check if `p` exists, and if it does we check it's value against our list of posts. If we don't find a match, we render the list of posts, otherwise we render a single post.
 
-![The main logic of the program](/posts/2021/07/01/main-logic.png)
+![The main logic of the program](/blog/posts/2021/07/01/main-logic.png)
 
 All that's left is to deploy our blog. Because it's literally just files, we can host it pretty much anywhere which allows to host static websites. I've chosen to host mine on [GitHub](https://github.com/JCGrant/blog/), using GitHub Pages.
 
